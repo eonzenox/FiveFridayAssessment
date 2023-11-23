@@ -1,0 +1,31 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:FiveFridayAssessment.Views"
+             mc:Ignorable="d"
+             x:Class="FiveFridayAssessment.Views.MainPage">
+    
+    <StackLayout x:Name="MainPageLayout">
+        <SearchBar
+            Placeholder="Search by name or registration"
+            Text="{Binding SearchText, Mode=TwoWay}"
+            SearchCommand="{Binding SearchCommand}" />
+
+        <ListView ItemsSource="{Binding FilteredDrivers}" HasUnevenRows="True" SelectedItem="{Binding SelectedDriver, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <Label Text="{Binding Forename}" />
+                            <Label Text="{Binding Surname}" />
+                            <Label Text="{Binding VehicleRegistration}" />
+                            <Button Text="View Details" Command="{Binding BindingContext.ViewDetailsCommand, Source={x:Reference MainPageLayout}}" CommandParameter="{Binding .}" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+</ContentPage>

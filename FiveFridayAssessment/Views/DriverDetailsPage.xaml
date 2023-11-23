@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="FiveFridayAssessment.Views.DriverDetailsPage">
+
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Label Text="{Binding DriverName}" FontAttributes="Bold" FontSize="20" HorizontalOptions="Center"/>
+            <Label Text="{Binding VehicleRegistration}" FontSize="16" HorizontalOptions="Center" Margin="0,0,0,20"/>
+
+            <ListView ItemsSource="{Binding Traces}" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding Date}" FontAttributes="Bold" FontSize="18" Margin="0,0,0,10"/>
+
+                                <ListView ItemsSource="{Binding Activity}" HasUnevenRows="True" RowHeight="50" VerticalOptions="FillAndExpand">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Start Time: " FontSize="16" FontAttributes="Bold" Margin="20,0,0,0"/>
+                                                    <Label Text="{Binding StartTime}" FontSize="16" Margin="0,0,10,0"/>
+
+                                                    <Label Text="Type: " FontSize="16" FontAttributes="Bold"/>
+                                                    <Label Text="{Binding Type}" FontSize="16" Margin="0,0,10,0"/>
+
+                                                    <Label Text="Duration: " FontSize="16" FontAttributes="Bold" Margin="20,0,0,0"/>
+                                                    <Label Text="{Binding Duration}" FontSize="16"/>
+                                                </StackLayout>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
